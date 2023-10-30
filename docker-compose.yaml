@@ -13,7 +13,6 @@ services:
     volumes:
       - ./nginx:/etc/nginx:ro
       - ./nginx_logs:/var/log/nginx/
-      - ./nextcloud:/var/www/nextcloud
     restart: unless-stopped
     ports:
       - "8080:8080"
