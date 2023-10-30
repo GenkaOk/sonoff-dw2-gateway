@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  php:
+    container_name: php
+    image: "php:8.2-fpm"
+    volumes:
+      - ./php:/usr/share/nginx/html/project
+    restart: unless-stopped
+  nginx:
+    container_name: nginx
+    image: "nginx:latest"
+    volumes:
+      - ./nginx:/etc/nginx:ro
+      - ./nginx_logs:/var/log/nginx/
+      - ./nextcloud:/var/www/nextcloud
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
